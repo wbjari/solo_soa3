@@ -16,10 +16,6 @@ public class Sprint {
     }
 
     public void setTitle(String title) {
-        if(!isUpdateable()) {
-            return;
-        }
-
         this.title = title;
     }
 
@@ -28,9 +24,6 @@ public class Sprint {
     }
 
     public void setStart(LocalDateTime start) {
-        if(!isUpdateable()) {
-            return;
-        }
         this.start = start;
     }
 
@@ -39,9 +32,6 @@ public class Sprint {
     }
 
     public void setEnd(LocalDateTime end) {
-        if(!isUpdateable()) {
-            return;
-        }
         this.end = end;
     }
 

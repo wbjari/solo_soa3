@@ -18,7 +18,6 @@ public class ScrumDoingState implements IState {
 
     @Override
     public IState previousState() {
-        // SEND NOTIFICATION
         return new ScrumTodoState();
     }
 }
