@@ -1,9 +1,9 @@
 package interfaces;
 
-public interface ISprintState {
+public abstract class ISprintState {
 
-    ISprintState previousState();
-    ISprintState nextState();
-    boolean isUpdateable();
+    public abstract ISprintState previousState();
+    public abstract ISprintState nextState();
+    public abstract boolean isUpdateable();
 
 }

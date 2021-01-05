@@ -2,9 +2,9 @@ package interfaces;
 
 import domain.Item;
 
-public interface IState {
+public abstract class IState {
 
-    IState nextState(Item item);
-    IState previousState();
+    public abstract IState nextState(Item item);
+    public abstract IState previousState();
 
 }

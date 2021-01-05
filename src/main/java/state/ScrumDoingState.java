@@ -3,7 +3,7 @@ package state;
 import domain.Item;
 import interfaces.IState;
 
-public class ScrumDoingState implements IState {
+public class ScrumDoingState extends IState {
 
     @Override
     public IState nextState(Item item) {

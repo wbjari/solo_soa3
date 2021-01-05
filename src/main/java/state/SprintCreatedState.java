@@ -2,7 +2,7 @@ package state;
 
 import interfaces.ISprintState;
 
-public class SprintCreatedState implements ISprintState {
+public class SprintCreatedState extends ISprintState {
 
     public ISprintState previousState() {
         return this;
