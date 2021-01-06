@@ -17,16 +17,14 @@ public class ScrumItemNotificationObserver implements IItemObserver {
         Item oldItem = itemObserveEvent.getOldValue();
         Item newItem = itemObserveEvent.getNewValue();
 
-        // Item changes state from done to todo
+        // Item changes state from done to to-do
         if(oldItem.getState() instanceof ScrumDoneState && newItem.getState() instanceof ScrumTodoState) {
-            // TODO: Notify scrum master
             LOGGER.info("Notify scrum master: item state changed from done to todo");
         }
 
         // Item state is doing and user changes.
         if(oldItem.getState() instanceof ScrumDoingState && newItem.getState() instanceof ScrumDoingState) {
             if(oldItem.getUser() != newItem.getUser()) {
-                // TODO: Notify scrum master
                 LOGGER.info("Notify scrum master: item user changed");
             }
         }
