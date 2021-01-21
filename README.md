@@ -1,2 +1,2 @@
-# solo_soa3
-SOA3 eindopdracht
+# jjacverh
+SOA3 eindopdracht (individueel)

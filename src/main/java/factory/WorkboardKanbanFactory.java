@@ -7,7 +7,7 @@ public class WorkboardKanbanFactory implements IWorkboardFactory {
     @Override
     public Item getItem() {
         Item item = new Item();
-        // item.setState();
+//        item.setState(new KanBanState());
         return item;
     }
 }
