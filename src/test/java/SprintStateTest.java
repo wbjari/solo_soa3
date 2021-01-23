@@ -1,15 +1,56 @@
 import domain.Sprint;
 import interfaces.ISprintState;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import state.SprintCreatedState;
 import state.SprintExecutingState;
 import state.SprintFinishedState;
 
 class SprintStateTest {
 
-    private Sprint sprint;
+    private static Sprint sprint;
+    private static ISprintState sprintState;
+
+    @Test
+    void createdNextStateExecuting() {    // State = Created.
+        sprintState = new SprintCreatedState().nextState();;
+
+        Assertions.assertEquals(SprintExecutingState.class, sprintState.getClass());
+    }
+
+    @Test
+    void executingNextStateFinished() {    // State = Executing.
+        sprintState = new SprintExecutingState().nextState();
+
+        Assertions.assertEquals(SprintFinishedState.class, sprintState.getClass());
+    }
+
+    @Test
+    void finishedNextState() {    // State = Finished. Finished has no next state, so stays in Finished.
+        sprintState = new SprintFinishedState().nextState();
+
+        Assertions.assertEquals(SprintFinishedState.class, sprintState.getClass());
+    }
+
+    @Test
+    void finishedPreviousState() {    // State = Finished. Finished can't go back to executing, so it stays in Finished.
+        sprintState = new SprintFinishedState().previousState();
+
+        Assertions.assertEquals(SprintFinishedState.class, sprintState.getClass());
+    }
+
+    @Test
+    void executingPreviousStateCreated() {    // State = Executing. Executing can't go back to created, so it stays in Executing.
+        sprintState = new SprintExecutingState().previousState();
+
+        Assertions.assertEquals(SprintExecutingState.class, sprintState.getClass());
+    }
+
+    @Test
+    void createdPreviousState() {    // State = Created. Created has no previous, so it stays in Created.
+        sprintState = new SprintCreatedState().previousState();
+
+        Assertions.assertEquals(SprintCreatedState.class, sprintState.getClass());
+    }
 
     @Test
     void setTitleSprintCreatedTest() {

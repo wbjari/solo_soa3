@@ -19,8 +19,7 @@ public class ScrumStateTest {
 
     @Test
     @Order(1)
-    // State = To-do.
-    public void todoNextStateDoing() {
+    public void todoNextStateDoing() {     // State = To-do.
         state = state.nextState(item);
 
         Assertions.assertEquals(ScrumDoingState.class, state.getClass());
@@ -28,8 +27,7 @@ public class ScrumStateTest {
 
     @Test
     @Order(2)
-    // State = doing.
-    public void doingNextStateDone() {
+    public void doingNextStateDone() {    // State = doing.
         state = state.nextState(item);
 
         Assertions.assertEquals(ScrumDoneState.class, state.getClass());
@@ -37,8 +35,7 @@ public class ScrumStateTest {
 
     @Test
     @Order(3)
-    // State = Done. Done has no next, so stays in Done.
-    public void doneNextState() {
+    public void doneNextState() {    // State = Done. Done has no next, so stays in Done.
         state = state.nextState(item);
 
         Assertions.assertEquals(ScrumDoneState.class, state.getClass());
@@ -46,16 +43,14 @@ public class ScrumStateTest {
 
     @Test
     @Order(4)
-    // State = Done. Done can't go back to Doing, so stays in Done.
-    public void donePreviousState() {
+    public void donePreviousState() {    // State = Done. Done can't go back to Doing, so stays in Done.
         state = state.previousState();
 
         Assertions.assertEquals(ScrumDoneState.class, state.getClass());
     }
 
     @Test
-    // State = To-do. To-do has no previous, so stays in To-do.
-    public void todoPreviousState() {
+    public void todoPreviousState() {    // State = To-do. To-do has no previous, so stays in To-do.
         state = new ScrumTodoState();
         state = state.previousState();
 
@@ -63,8 +58,7 @@ public class ScrumStateTest {
     }
 
     @Test
-    // State = Doing.
-    public void doingPreviousStateTodo() {
+    public void doingPreviousStateTodo() {    // State = Doing.
         state = new ScrumDoingState();
         state = state.previousState();
 
@@ -72,7 +66,7 @@ public class ScrumStateTest {
     }
 
     @Test
-    void doingNextStateDoneSubitemsDoing() {
+    void doingNextStateDoneSubitemsDoing() {    // State = Doing, subitems doing.
         state = new ScrumDoingState();
 
         Item subItem = new Item();
@@ -89,7 +83,7 @@ public class ScrumStateTest {
     }
 
     @Test
-    void doingNextStateDoneSubitemsDone() {
+    void doingNextStateDoneSubitemsDone() {    // State = Doing, subitems Done.
         state = new ScrumDoingState();
 
         Item subItem = new Item();
