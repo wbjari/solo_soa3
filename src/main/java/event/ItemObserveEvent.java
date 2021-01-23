@@ -15,7 +15,6 @@ public class ItemObserveEvent {
     public Item getOldValue() {
         return oldValue;
     }
-
     public void setOldValue(Item oldValue) {
         this.oldValue = oldValue;
     }
@@ -23,7 +22,6 @@ public class ItemObserveEvent {
     public Item getNewValue() {
         return newValue;
     }
-
     public void setNewValue(Item newValue) {
         this.newValue = newValue;
     }

@@ -30,19 +30,29 @@ public class Project {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Item> getItems() {
+        return this.items;
+    }
+    public Item getNewItem() {
+        return this.workboardFactory.getItem();
+    }
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+    public void removeItem(Item item) {
+        this.items.remove(item);
     }
 
     public List<User> getUsers() {
         return this.users;
     }
-
     public void addUser(User user) {
         this.users.add(user);
     }
-
     public void removeUser(User user) {
         this.users.remove(user);
     }
@@ -50,35 +60,16 @@ public class Project {
     public List<Thread> getThreads() {
         return this.threads;
     }
-
     public void addThread(Thread thread) {
         this.threads.add(thread);
     }
-
     public void removeThread(Thread thread) {
         this.threads.remove(thread);
-    }
-
-    public List<Item> getItems() {
-        return this.items;
-    }
-
-    public Item getNewItem() {
-        return this.workboardFactory.getItem();
-    }
-
-    public void addItem(Item item) {
-        this.items.add(item);
-    }
-
-    public void removeItem(Item item) {
-        this.items.remove(item);
     }
 
     public ISCMAdapter getScmAdapter() {
         return scm.getScmAdapter();
     }
-
     public void setScmAdapter(ISCMAdapter scm) {
         this.scm.setScmAdapter(scm);
     }

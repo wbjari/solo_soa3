@@ -20,12 +20,12 @@ public class ProjectTest {
     public void beforeAllTests() {
         this.workboardFactory = new WorkboardScrumFactory();
         this.scmAdapter = new SCMGitAdapter();
-        this.project = new Project("My First Project", this.workboardFactory, scmAdapter);
+        this.project = new Project("My first project", this.workboardFactory, scmAdapter);
     }
 
     @Test
     public void setNameTest() {
-        String expectedString = "My first Editted Project";
+        String expectedString = "My first editted Project";
 
         this.project.setName(expectedString);
         Assertions.assertEquals(expectedString, this.project.getName());

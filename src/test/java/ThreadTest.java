@@ -18,8 +18,8 @@ public class ThreadTest {
 
     @Test
     public void constructorTest() {
-        String expectedString = "Thread Name";
-        Project expectedProject = new Project("Project", new WorkboardScrumFactory(), new SCMGitAdapter());
+        String expectedString = "First thread";
+        Project expectedProject = new Project("My first project", new WorkboardScrumFactory(), new SCMGitAdapter());
 
         this.thread = new Thread(expectedString, expectedProject);
 
@@ -29,7 +29,7 @@ public class ThreadTest {
 
     @Test
     public void setNameTest() {
-        String expectedString = "Thread Name";
+        String expectedString = "Second thread";
 
         this.thread.setName(expectedString);
         Assertions.assertEquals(expectedString, this.thread.getName());
@@ -37,7 +37,7 @@ public class ThreadTest {
 
     @Test
     public void setProjectTest() {
-        Project project = new Project("Project", new WorkboardScrumFactory(), new SCMGitAdapter());
+        Project project = new Project("My second project", new WorkboardScrumFactory(), new SCMGitAdapter());
 
         this.thread.setProject(project);
         Assertions.assertEquals(project, this.thread.getProject());
@@ -46,7 +46,7 @@ public class ThreadTest {
     @Test
     public void addMessageTest() {
         Message message = new Message();
-        message.setText("Message text");
+        message.setText("Lorem ipsum dolor ist amet..");
 
         Assertions.assertEquals(0, this.thread.getMessages().size());
 
@@ -57,7 +57,7 @@ public class ThreadTest {
     @Test
     public void removeMessageTest() {
         Message message = new Message();
-        message.setText("Message text");
+        message.setText("Consectetur adipiscing elit..");
 
         Assertions.assertEquals(0, this.thread.getMessages().size());
 

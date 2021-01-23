@@ -15,7 +15,6 @@ public class ScrumDoingState extends IState {
 
         return new ScrumDoneState();
     }
-
     @Override
     public IState previousState() {
         return new ScrumTodoState();

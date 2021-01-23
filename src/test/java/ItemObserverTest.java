@@ -51,10 +51,14 @@ class ItemObserverTest {
 
         Mockito.verify(observer, times(1)).update(this.itemObserveEvent);
 
+        this.item.notifyObservers(this.itemObserveEvent);
+
+        Mockito.verify(observer, times(2)).update(this.itemObserveEvent);
+
         this.item.removeObserver(observer);
         this.item.notifyObservers(this.itemObserveEvent);
 
-        Mockito.verify(observer, times(1)).update(this.itemObserveEvent);
+        Mockito.verify(observer, times(2)).update(this.itemObserveEvent);
     }
 
 }

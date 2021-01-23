@@ -6,11 +6,7 @@ import state.ScrumDoingState;
 import state.ScrumDoneState;
 import state.ScrumTodoState;
 
-import java.util.logging.Logger;
-
 public class ScrumItemNotificationObserver implements IItemObserver {
-
-    private final static Logger LOGGER = Logger.getLogger(ScrumItemNotificationObserver.class.getName());
 
     @Override
     public void update(ItemObserveEvent itemObserveEvent) {
@@ -19,14 +15,12 @@ public class ScrumItemNotificationObserver implements IItemObserver {
 
         // Item changes state from done to to-do
         if(oldItem.getState() instanceof ScrumDoneState && newItem.getState() instanceof ScrumTodoState) {
-            LOGGER.info("Notify scrum master: item state changed from done to todo");
+            System.out.println("Item changed from done back to to-do.");
         }
 
         // Item state is doing and user changes.
-        if(oldItem.getState() instanceof ScrumDoingState && newItem.getState() instanceof ScrumDoingState) {
-            if(oldItem.getUser() != newItem.getUser()) {
-                LOGGER.info("Notify scrum master: item user changed");
-            }
+        if(oldItem.getState() instanceof ScrumDoingState && newItem.getState() instanceof ScrumDoingState && oldItem.getUser() != newItem.getUser()) {
+            System.out.println("Item is doing and user changed.");
         }
 
     }

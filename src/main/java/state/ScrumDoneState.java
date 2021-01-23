@@ -8,7 +8,6 @@ public class ScrumDoneState extends IState {
     public IState nextState(Item item) {
         return this;
     }
-
     @Override
     public IState previousState() {
         return this;

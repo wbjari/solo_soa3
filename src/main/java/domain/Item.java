@@ -7,6 +7,7 @@ import interfaces.IState;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Item implements IItemObservable {
 
@@ -23,16 +24,25 @@ public class Item implements IItemObservable {
         this.observerList = new ArrayList<>();
     }
 
+    public Item(Item item) {
+        this.observerList = item.observerList;
+        this.subItems = item.subItems;
+        this.title = item.title;
+        this.description = item.description;
+        this.state = item.state;
+        this.sprint = item.sprint;
+        this.user = item.user;
+    }
+
     public IState getState() {
         return state;
     }
-
     public void setState(IState state) {
-        Item old = this;
+        Item old = new Item(this);
 
         this.state = state;
 
-        if(old.getState() != this.state) {
+        if(old.getState() != null && this.state != null && old.getState().getClass() != this.state.getClass()) {
             this.notifyObservers(new ItemObserveEvent(old, this));
         }
     }
@@ -41,12 +51,10 @@ public class Item implements IItemObservable {
     public void registerObserver(IItemObserver observer) {
         this.observerList.add(observer);
     }
-
     @Override
     public void removeObserver(IItemObserver observer) {
         this.observerList.remove(observer);
     }
-
     @Override
     public void notifyObservers(ItemObserveEvent itemObserveEvent) {
         for(IItemObserver itemObserver: this.observerList) {
@@ -57,13 +65,12 @@ public class Item implements IItemObservable {
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
-        Item old = this;
+        Item old = new Item(this);
 
         this.user = user;
 
-        if(old.getUser() != this.user) {
+        if(old.getUser() != null && this.user != null && !Objects.equals(old.getUser().getEmail(), this.user.getEmail())) {
             this.notifyObservers(new ItemObserveEvent(old, this));
         }
     }
@@ -73,7 +80,6 @@ public class Item implements IItemObservable {
         items = this.subItems.toArray(items);
         return items;
     }
-
     public void addSubItem(Item subItem) {
         if(subItem == null || subItem.subItems.size() > 0){
             return;
@@ -81,7 +87,6 @@ public class Item implements IItemObservable {
 
         this.subItems.add(subItem);
     }
-
     public void removeSubItem(Item subItem) {
         if(subItem != null && subItems.size() > 0){
             this.subItems.remove(subItem);
@@ -91,7 +96,6 @@ public class Item implements IItemObservable {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -99,7 +103,6 @@ public class Item implements IItemObservable {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -107,7 +110,6 @@ public class Item implements IItemObservable {
     public Sprint getSprint() {
         return sprint;
     }
-
     public void setSprint(Sprint sprint) {
         if(this.sprint != null && !this.sprint.isUpdateable()) {
             return;

@@ -22,7 +22,6 @@ public class Thread {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -30,7 +29,6 @@ public class Thread {
     public Project getProject() {
         return project;
     }
-
     public void setProject(Project project) {
         this.project = project;
     }
@@ -38,11 +36,9 @@ public class Thread {
     public List<Message> getMessages() {
         return messages;
     }
-
     public void addMessage(Message message) {
         this.messages.add(message);
     }
-
     public void removeMessage(Message message) {
         this.messages.remove(message);
     }

@@ -13,6 +13,30 @@ public class UserTest {
     }
 
     @Test
+    void setFirstNameTest() {
+        String expectedString = "Pietje";
+
+        this.user.setFirstName(expectedString);
+        Assertions.assertEquals(expectedString, this.user.getFirstName());
+    }
+
+    @Test
+    void setLastNameTest() {
+        String expectedString = "van Dongen";
+
+        this.user.setLastName(expectedString);
+        Assertions.assertEquals(expectedString, this.user.getLastName());
+    }
+
+    @Test
+    void setEmailTest() {
+        String expectedString = "wbjari@gmail.com";
+
+        this.user.setEmail(expectedString);
+        Assertions.assertEquals(expectedString, this.user.getEmail());
+    }
+
+    @Test
     public void setNameTest() {
         String expectedString1 = "Jari";
         String expectedString2 = "Verhaard";

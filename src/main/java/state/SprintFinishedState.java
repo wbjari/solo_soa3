@@ -8,7 +8,6 @@ public class SprintFinishedState extends ISprintState {
     public ISprintState previousState() {
         return this;
     }
-
     @Override
     public ISprintState nextState() {
         return this;

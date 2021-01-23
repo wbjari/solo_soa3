@@ -2,28 +2,28 @@ import domain.Sprint;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import state.SprintCreatedState;
 import java.time.LocalDateTime;
 
-public class SprintTest {
+class SprintTest {
 
     private Sprint sprint;
 
     @BeforeEach
-    public void beforeAllTests() {
-        this.sprint = new Sprint();
+    void beforeAllTests() {
+        this.sprint = new Sprint(new SprintCreatedState());
     }
 
     @Test
-    public void setTitleTest() {
-        String expectedString = "Sprint 1";
+    void setTitleTest() {
+        String expectedString = "Sprint title";
 
         this.sprint.setTitle(expectedString);
         Assertions.assertEquals(expectedString, this.sprint.getTitle());
     }
 
     @Test
-    public void setStartTest() {
+    void setStartTest() {
         LocalDateTime localDateTime = LocalDateTime.now();
 
         this.sprint.setStart(localDateTime);
@@ -31,10 +31,29 @@ public class SprintTest {
     }
 
     @Test
-    public void setEndTest() {
+    void setEndTest() {
         LocalDateTime localDateTime = LocalDateTime.now();
 
         this.sprint.setEnd(localDateTime);
+        Assertions.assertEquals(localDateTime, this.sprint.getEnd());
+    }
+
+    @Test
+    void setStartNotUpdatableTest() {
+        LocalDateTime localDateTime = this.sprint.getStart();
+
+        this.sprint.nextState();
+        this.sprint.setStart(LocalDateTime.now());
+        Assertions.assertEquals(localDateTime, this.sprint.getStart());
+
+    }
+
+    @Test
+    void setEndNotUpdateableTest() {
+        LocalDateTime localDateTime = this.sprint.getEnd();
+
+        this.sprint.nextState();
+        this.sprint.setEnd(LocalDateTime.now());
         Assertions.assertEquals(localDateTime, this.sprint.getEnd());
     }
 }

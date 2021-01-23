@@ -15,7 +15,7 @@ public class MessageTest {
 
     @Test
     public void setTextTest() {
-        String expectedString = "Test";
+        String expectedString = "Lorem ipsum dolor sit amet..";
 
         this.message.setText(expectedString);
         Assertions.assertEquals(expectedString, this.message.getText());

@@ -11,35 +11,45 @@ public class Sprint {
     private LocalDateTime end;
     private ISprintState sprintState;
 
+    public Sprint(ISprintState sprintState) {
+        this.sprintState = sprintState;
+    }
+
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
-        this.title = title;
+        if(!isUpdateable()) {
+            return;
+        } else {
+            this.title = title;
+        }
     }
 
-    public LocalDateTime getStart() {
-        return start;
-    }
-
+    public LocalDateTime getStart() { return start; }
     public void setStart(LocalDateTime start) {
-        this.start = start;
+        if(!isUpdateable()) {
+            return;
+        } else {
+            this.start = start;
+        }
     }
 
-    public LocalDateTime getEnd() {
-        return end;
-    }
-
+    public LocalDateTime getEnd() { return end; }
     public void setEnd(LocalDateTime end) {
-        this.end = end;
-    }
-
-    public boolean isUpdateable() {
-        return sprintState.isUpdateable();
+        if(!isUpdateable()) {
+            return;
+        } else {
+            this.end = end;
+        }
     }
 
     public void nextState() {
         this.sprintState = this.sprintState.nextState();
     }
+    public ISprintState getState() {
+        return this.sprintState;
+    }
+    public boolean isUpdateable() { return sprintState.isUpdateable(); }
+
 }
